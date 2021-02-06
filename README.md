@@ -37,8 +37,8 @@ The website game is design to fit the devices height and have all the interactio
 The default flow of information will follow the most logical path for a new user: *welcome, instructions, game play, end game*. However, the option to bypass Instructions will be available.
 
 ### Skeleton
-- [Simon, the Chameleon! Mobile Layout](#)
-- [Simon, the Chameleon! Desktop Layout](#)
+- [Simon, the Chameleon! Mobile Layout](https://github.com/belaventer/simon-the-chameleon/blob/master/wireframes/simon-the-chameleon-mobile-layout.pdf)
+- [Simon, the Chameleon! Desktop Layout](https://github.com/belaventer/simon-the-chameleon/blob/master/wireframes/simon-the-chameleon-desktop-layout.pdf)
 
 ### Surface
 #### Colour
@@ -54,7 +54,7 @@ Default fallback font-family: "sans-Serif".
 ## Features
 The game is a singular page with the content being displayed and changed on the middle section. 
 
-- Constant at the top-left (mobile)/top-middle (desktop), there is the **Game** **Title**. This title cannot be interacted with.
+- Constant at the top-left (mobile)/top-middle (desktop), there is the **Game Title**. This title cannot be interacted with.
 - Constant at the top-right, there is the **Settings** buttons. If the button is clicked, the Settings are displayed.
 - Constant at the bottom-middle (mobile)/bottom-left (desktop), there is the **Instructions** buttons. If the button is clicked, the Instructions are displayed.
 - Once the game starts, constant at the bottom-middle (mobile)/bottom-right (desktop), there is the **End Game** button. If the button is clicked, the game is over.
@@ -98,7 +98,9 @@ Currently the programmer does not have the knowledge to develop a server to coll
 - [Google Fonts](https://fonts.google.com/):
   
    Used to import “Sunshiney" and “Roboto” fonts.
-<!--[Fonts Awesome v5.15](https://fontawesome.com/):-->
+- [Fonts Awesome v5.15](https://fontawesome.com/):
+
+   Used for the Settings (cog) icon.
 
 - [Typora](https://typora.io/#):
 
@@ -120,10 +122,8 @@ This project was developed using the Gitpod IDE, committed to git and pushed to 
 - Login to GitHub.
 - Search for the repository belaventer/simon-the-chameleon and select it.
 - Select Settings on the Menu under the Repository name.
-- Under "GitHub Pages", use Branch drop-down menu and select Master Branch as the publishing source.
+- Under "GitHub Pages", use Branch drop-down menu and select Master Branch as the publishing source then click Save.
 - The page will be refreshed and the website is deployed. Return to GitHub Pages section to view the link to the deployed website.
-
-*<!--At the moment of submitting this Milestone project the Development Branch and Master Branch are identical.-->*
 
 ### Run the project locally:
 - Ensure you have Gipod Browser Extension for Chrome and you are logged in Gipod with your GitHub account. 
@@ -144,19 +144,21 @@ This project was developed using the Gitpod IDE, committed to git and pushed to 
 
 ## Credit
 ### Content
-<!--All content was written by the developer.-->
+All content was written by the developer.
 
 ### Media
-<!--All media was created by the developer.-->
+All media was created by the developer.
 
 ### Code
 Favicon added as per ["Add A Favicon to A Website in HTML | Learn HTML and CSS | HTML Tutorial | HTML for Beginners"](https://www.youtube.com/watch?v=kEf1xSwX5D8) by Dani Krossing
 
+Use of masking for image background found in ["Mozzila Developer | CSS | mask-image"](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image)
+
+Changing cursor to pointer solution found in ["w3docs | How to Change cursor on hover in CSS"](https://www.w3docs.com/snippets/css/how-to-change-cursor-on-hover-in-css.html)
+
 <!-- [Bootstrap Documentation](https://getbootstrap.com/) was constantly referred to for the correct use of Bootstrap components and grid. -->
 
 [W3Schools](https://www.w3schools.com/) referred to for general HTML, CSS and JavaScript syntax.
-
-<!--How to justify flex-item learned from [StackOverflow Post](https://stackoverflow.com/questions/32551291/in-css-flexbox-why-are-there-no-justify-items-and-justify-self-properties).-->
 
 ### Acknowledgment
 
