@@ -5,18 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="description" content="Free web memory game"/>
+        <!-- Favicon added as per: https://www.youtube.com/watch?v=kEf1xSwX5D8 -->
         <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <title>Simon, the Chameleon!</title>
     </head>
     <body class="flex-container-column bg-colour-main">
-        <div class="game-header flex-container-row">
+        <div class="flex-container-row" id="game-header">
             <h2 class="text-justify-center">Simon, the Chameleon!</h2>
             <h2><i class="flex-item fas fa-cog"></i></h2>
         </div>
-        <div class="game-playable-area bg-colour-playable-area"></div>
-        <div class="game-footer"></div>
+        <div class="bg-colour-playable-area flex-item-center flex-container-column" id="game-playable-area"></div>
+        <div class="flex-container-row" id="game-footer"></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+        <script src="assets/js/simonCode.js"></script>
     </body>
 </html>

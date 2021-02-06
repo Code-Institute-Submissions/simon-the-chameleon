@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&family=Sunshiney&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&family=Sunshiney&display=swap');
 
 /* Declaring color variables */
 :root {
@@ -11,18 +11,25 @@
 .flex-container-column {
     display:flex;
     flex-direction: column;
+    justify-content: space-around;
+    overflow: hidden;
 }
 
 .flex-container-row {
     display:flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
+    overflow: hidden;
 }
 
 .text-justify-center {
     flex-grow: 1;
     text-align: center;
+}
+
+.flex-item-center {
+    align-self: center;
 }
 
 /* Color classes */
@@ -41,26 +48,64 @@ body {
     color: var(--colour-text-main);
     height: 100vh;
     margin: 0 2.5vw;
-    overflow: hidden;
 }
 
 h2 {
     font-family: "Sunshiney", sans-serif;
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin: 0;
 }
 
-.game-header {
+p {
+    font-size: 1.65rem;
+    letter-spacing: 1.2px;
+    font-weight: 500;
+    margin: 5vh 0 0;
+}
+
+#game-header {
     height: 15vh;
 }
 
-.game-footer {
+#game-footer {
     height: 12.5vh;
 }
 
-.game-playable-area {
+#game-playable-area {
     height: 72.5vh;
     width: 100%;
     border-radius: 30px;
-    align-self: center;
+}
+
+.image-simon {
+    height: 35vh;
+    width: 35vh;
+    /* Image masking found in: https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image */
+    mask-image: url(../images/simon-mask.png);
+    -webkit-mask-image: url(../images/simon-mask.png);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    margin: 5vh;
+}
+
+button {
+    background-color: transparent;
+    border: 5px solid var(--colour-text-main);
+    border-radius: 10px;
+    color: var(--colour-text-main);
+    font-size: 1.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+button:hover, button:focus, button:active {
+    /* Changing cursor to pointer found in: https://www.w3docs.com/snippets/css/how-to-change-cursor-on-hover-in-css.html */
+    cursor: pointer;
+    background-color: var(--bg-colour-playable-area);
+    outline: none;
+}
+
+button:active {
+    transform: scale(0.75);
 }
