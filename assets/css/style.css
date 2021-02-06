@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&family=Sunshiney&display=swap');
+
+/* Declaring color variables */
+:root {
+  --bg-colour-main: #996633;
+  --bg-colour-playable-area: #663300;
+  --colour-text-main: #fffccc;
+}
+
+/* Utilities classes */
+.flex-container-column {
+    display:flex;
+    flex-direction: column;
+}
+
+.flex-container-row {
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.text-justify-center {
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* Color classes */
+.bg-colour-main {
+    background-color: var(--bg-colour-main);
+}
+
+.bg-colour-playable-area {
+    background-color: var(--bg-colour-playable-area);
+}
+
+/* Elements setup */
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    color: var(--colour-text-main);
+    height: 100vh;
+    margin: 0 2.5vw;
+    overflow: hidden;
+}
+
+h2 {
+    font-family: "Sunshiney", sans-serif;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.game-header {
+    height: 15vh;
+}
+
+.game-footer {
+    height: 12.5vh;
+}
+
+.game-playable-area {
+    height: 72.5vh;
+    width: 100%;
+    border-radius: 30px;
+    align-self: center;
+}
