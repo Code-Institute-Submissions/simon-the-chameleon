@@ -5,6 +5,11 @@
   --bg-colour-main: #996633;
   --bg-colour-playable-area: #663300;
   --colour-text-main: #fffccc;
+  --bg-colour-play-red: #C00000;
+  --bg-colour-play-blue: #0070C0;
+  --bg-colour-play-yellow: #FFC000;
+  --bg-colour-play-green: #00B050;
+  --bg-colour-play-custom: #FF6600;
 }
 
 /* Utilities classes */
@@ -46,6 +51,26 @@
 
 .bg-colour-playable-area {
     background-color: var(--bg-colour-playable-area);
+}
+
+.bg-colour-play-red {
+    background-color: var(--bg-colour-play-red);
+}
+
+.bg-colour-play-blue {
+    background-color: var(--bg-colour-play-blue);
+}
+
+.bg-colour-play-yellow {
+    background-color: var(--bg-colour-play-yellow);
+}
+
+.bg-colour-play-green {
+    background-color: var(--bg-colour-play-green);
+}
+
+.bg-colour-play-custom {
+    background-color: var(--bg-colour-play-custom);
 }
 
 /* Elements setup */
@@ -125,4 +150,27 @@ button:hover, button:focus, button:active {
 
 button:active {
     transform: scale(0.75);
+}
+
+#playing-area {
+    width: 80vw;
+    height: 10vh;
+    background-color: var(--bg-colour-main);
+    border-radius: 10px;
+    padding: 0 1vw;
+}
+
+.playing-colour-area {
+    width: 15vw;
+    height: 85%;
+    border-radius: 10px;
+}
+
+.cursor-hover:hover, .cursor-hover:focus, .cursor-hover:active {
+    /* Changing cursor to pointer found in: https://www.w3docs.com/snippets/css/how-to-change-cursor-on-hover-in-css.html */
+    cursor: pointer;
+}
+
+.cursor-hover:active {
+    transform: scale(0.80);
 }

@@ -74,7 +74,9 @@ At game over, if by getting the sequence wrong or interrupting the game delibera
 
 ### Existing Features <!--To be updated during coding-->
 
+1. **Instructions:** six descriptive instructions with images are available to the user by clicking the instructions button.
 
+2. **Game Play:** the game play as outlined above conists of a continuous game where the sequence gets longer with time. The progress is saved as the user passes the levels.
 
 ### Features left to implement
 
@@ -92,12 +94,11 @@ Currently the programmer does not have the knowledge to develop a server to coll
 - [Gitpod](https://gitpod.io/workspaces/):
 
     The developer used Gitpod as the IDE for building the website.
-<!--[Bootstrap v4.5](https://getbootstrap.com/):-->
 
-   <!--Used for the Carousel functionality in the Instructions.-->
 - [Google Fonts](https://fonts.google.com/):
   
    Used to import “Sunshiney" and “Roboto” fonts.
+
 - [Fonts Awesome v5.15](https://fontawesome.com/):
 
    Used for the Settings (cog) icon.
@@ -105,6 +106,7 @@ Currently the programmer does not have the knowledge to develop a server to coll
 - [Typora](https://typora.io/#):
 
    Used for Markdown editing of README and TESTING files.
+   
 - [Clip Studio Paint](https://www.clipstudio.net/en/):
 
    Used for images development and editing.
@@ -156,9 +158,13 @@ Use of masking for image background found in ["Mozzila Developer | CSS | mask-im
 
 Changing cursor to pointer solution found in ["w3docs | How to Change cursor on hover in CSS"](https://www.w3docs.com/snippets/css/how-to-change-cursor-on-hover-in-css.html)
 
-<!-- [Bootstrap Documentation](https://getbootstrap.com/) was constantly referred to for the correct use of Bootstrap components and grid. -->
+Use of wildcard for classes found in [Stack Overflow | jQuery Remove Class Wildcard](https://stackoverflow.com/questions/2644299/jquery-removeclass-wildcard)
 
-[W3Schools](https://www.w3schools.com/) referred to for general HTML, CSS and JavaScript syntax.
+[W3Schools](https://www.w3schools.com/) referred to for general HTML, CSS and JavaScript syntax
+
+[jQuery API documentation](https://api.jquery.com/) referred to for jQuery syntax and examples
+
+Saving array on Local Storage example found in [Stack Overflow | How Do I Store an Array in localStorage](https://stackoverflow.com/questions/3357553/how-do-i-store-an-array-in-localstorage)
 
 ### Acknowledgment
 
