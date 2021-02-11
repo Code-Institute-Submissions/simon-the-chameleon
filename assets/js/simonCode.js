@@ -5,7 +5,6 @@ $.when( $.ready ).then(function() {
 
 // Declaring project variables and local storage variables.
 var gameStarted;
-localStorage.setItem('savedProgress', false);
 
 // Function to load Welcome content
 function displayWelcomeContent() {
@@ -24,10 +23,37 @@ function displayWelcomeContent() {
 function checkSavedProgress() {
     var userSavedProgress = localStorage.getItem('savedProgress');
 
-    if (userSavedProgress == 'false') {
+    if (userSavedProgress == 'false' || userSavedProgress === undefined) {
         gamePlay(1);
+    } else {
+         displayContinueGameQuestion();
     };
-    // else {
-    //     displayContinueGameQuestion();
-    // }
+}
+
+// Function for continuing last progress
+function displayContinueGameQuestion() {
+    $("#game-playable-area").html(
+        `<h4 class="flex-item-center text-justify-center">Welcome back!</h4>
+        <p class="flex-item-center text-justify-center">If you like to continue your previous game click CONTINUE.<br>If you wish to start a new game, click NEW GAME.</p>`
+    );
+
+    $("#game-footer").removeClass("flex-justify-center");
+    
+    $("#game-footer").html(
+        `<button id="button-load-previous-game">Continue</button>
+        <button id="button-start-new-game">New game</button>`
+    );
+
+    $("#button-load-previous-game").click(function(){
+        var controller = new AbortController();
+        controller.abort();
+        gamePlay(parseInt(localStorage.getItem('savedLevel')));
+    });
+
+    $("#button-start-new-game").click(function(){
+        localStorage.setItem('savedProgress', false);
+        localStorage.setItem('savedLevel', 0);
+        localStorage.setItem('savedSequence', "");
+        gamePlay(1);
+    });
 }

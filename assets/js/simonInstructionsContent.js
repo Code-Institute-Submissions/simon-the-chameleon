@@ -20,19 +20,19 @@ function displayInstructions(stepNumber) {
     );
 
     // Footer button: if instruction is clicked during game plat, display CONTINUE instead of start.
-    var buttonString;
+    var gameStarted = localStorage.getItem('gameStarted');
 
     if (gameStarted == false) {
-        buttonString = "START"
+        $("#game-footer").html(
+        `<button onclick="checkSavedProgress()">START</button>`
+    );
     } else {
-        buttonString = "CONTINUE"
+        $("#game-footer").html(
+        `<button onclick="gamePlay(parseInt(localStorage.getItem('savedLevel')))">CONTINUE</button>`
+    );
     };
 
     $("#game-footer").addClass("flex-justify-center");
-
-    $("#game-footer").html(
-        `<button onclick="checkSavedProgress()">${buttonString}</button>`
-    );
 }
 
 // Function to change the Instructions step displayed
