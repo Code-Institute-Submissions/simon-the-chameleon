@@ -1,11 +1,10 @@
 // General function for the sequencing of steps
 function gamePlay(currentLevel) {
-    if (currentLevel == 1) {
+    if (currentLevel == 1 & localStorage.getItem("savedSequence") == "") {
         var sequenceOrder = [];
     } else {
         var sequenceOrder = JSON.parse(localStorage.getItem("savedSequence"));
     };
-    
 
     localStorage.setItem('gameStarted', true);
     displayGamePlay();
@@ -14,37 +13,99 @@ function gamePlay(currentLevel) {
         countDown(currentLevel, sequenceOrder)
             .then(function(passSequence) {
                 return displayColour(currentLevel, passSequence)
-            }, function (buttonClicked){
+            }, function(buttonClicked) {
                 return Promise.reject(buttonClicked);
             })
             .then(function(colourSequence) {
-                    checkUserInput(currentLevel, colourSequence)
+                checkUserInput(currentLevel, colourSequence)
                     .then(function(sequence) {
                         localStorage.setItem('savedProgress', true);
-                        localStorage.setItem('savedLevel', currentLevel);
                         // Saving array on Local Storage https://stackoverflow.com/questions/3357553/how-do-i-store-an-array-in-localstorage
                         localStorage.setItem('savedSequence', JSON.stringify(sequence));
                         currentLevel = currentLevel + 1;
+                        localStorage.setItem('savedLevel', currentLevel);
                     }, function(err) {
-                        if (err == "Game Over") {
-                            localStorage.setItem('savedProgress', false);
-                            localStorage.setItem('savedLevel', 0);
-                            localStorage.setItem('savedSequence', "");
-                            displayWelcomeContent();
-                        };
-                        return Promise.reject();
+                        return Promise.reject(err);
                     })
                     .then(function() {
                         if (m < currentLevel) {
                             m = m + 1;
                             loopForLevels(m, currentLevel);
                         }
-                    }, function (){
-                        return false;
+                    }, function(buttonClicked) {
+                        switch (buttonClicked) {
+                            case "button-instructions":
+                                displayInstructions(0);
+                                break;
+                            case "button-end-game":
+                                if (confirm("Your progress will be lost. Do you want to proceed?") || buttonClicked == "Game Over") {
+                                    localStorage.setItem('savedProgress', false);
+                                    localStorage.setItem('savedLevel', 0);
+                                    localStorage.setItem('savedSequence', "");
+                                    localStorage.setItem('gameStarted', false);
+                                    displayEndGame(currentLevel);
+                                } else {
+                                    gamePlay(currentLevel);
+                                };
+                                break;
+                            case "Game Over":
+                                if (confirm("Wrong colour! Would you like to restart the level?")) {
+                                    gamePlay(currentLevel);
+                                } else {
+                                    localStorage.setItem('savedProgress', false);
+                                    localStorage.setItem('savedLevel', 0);
+                                    localStorage.setItem('savedSequence', "");
+                                    localStorage.setItem('gameStarted', false);
+                                    displayEndGame(currentLevel);
+                                };
+                                break;
+                            case "button-leave":
+                                if (currentLevel == 1) {
+                                    if (confirm("No data to save. Click ok to return to main screen, cancel to restart level.")) {
+                                        location.reload();
+                                    } else {
+                                        return gamePlay(1);
+                                    }
+                                } else {
+                                    alert("Progress saved at level: " + localStorage.getItem("savedLevel"))
+                                    location.reload();
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                        return Promise.reject();
                     });
-            }, function (buttonClicked){
-                if (buttonClicked == "button-instructions") {
-                    return displayInstructions(0);
+            }, function(buttonClicked) {
+                switch (buttonClicked) {
+                    case "button-instructions":
+                        displayInstructions(0);
+                        break;
+                    case "button-end-game":
+                        if (confirm("Your progress will be lost. Do you want to proceed?") || buttonClicked == "Game Over") {
+                            localStorage.setItem('savedProgress', false);
+                            localStorage.setItem('savedLevel', 0);
+                            localStorage.setItem('savedSequence', "");
+                            localStorage.setItem('gameStarted', false);
+                            displayEndGame(currentLevel);
+                        } else {
+                            gamePlay(currentLevel);
+                        };
+                        break;
+                    case "button-leave":
+                        if (currentLevel == 1) {
+                            if (confirm("No data to save. Click ok to return to main screen, cancel to restart level.")) {
+                                location.reload();
+                            } else {
+                                return gamePlay(1);
+                            }
+                        } else {
+                            alert("Progress saved at level: " + localStorage.getItem("savedLevel"))
+                            location.reload();
+                        }
+                        break;
+                    default:
+                        break;
                 }
                 return Promise.reject();
             });
@@ -57,7 +118,7 @@ function gamePlay(currentLevel) {
 function displayGamePlay() {
     $("#game-playable-area").html(
         `<img class="image-simon flex-item-center bg-colour-main" src="assets/images/simon-eye.png" alt="Simon changing colours">
-        <p class="flex-item-center text-justify-center" id="game-play-messages""> <br> </p>
+        <p class="flex-item-center text-justify-center" id="game-play-messages"> <br> </p>
         <div class="flex-container-row flex-item-center" id="playing-area">
             <div class="playing-colour-area bg-colour-play-red" value="0"></div>
             <div class="playing-colour-area bg-colour-play-blue" value="1"></div>
@@ -71,8 +132,8 @@ function displayGamePlay() {
 
     $("#game-footer").html(
         `<button id="button-instructions">Instructions</button>
-        <button onclick="">Save & Leave</button>
-        <button onclick="">End Game</button>`
+        <button id="button-leave">Save & Leave</button>
+        <button id="button-end-game">End Game</button>`
     );
     return;
 }
@@ -94,11 +155,11 @@ function countDown(currentLevel, passSequence) {
         }
     }, 1000);
 
-    $('button').click(function(){
+    $('button').click(function() {
         clearInterval(interval);
         d.reject($(this).attr("id"));
     });
-        
+
     return d.promise();
 }
 
@@ -199,7 +260,7 @@ function displayColour(currentLevel, sequenceOrder) {
             }
         }
         loopForSwitch(0);
-        $('button').click(function(){
+        $('button').click(function() {
             clearInterval(t);
             $(".image-simon").addClass("bg-colour-main");
             reject($(this).attr("id"));
@@ -216,6 +277,7 @@ function clearColours() {
 
 function checkUserInput(currentLevel, sequence) {
     var d = $.Deferred();
+    var turnStarted = true;
     $(".image-simon").addClass("bg-colour-main");
     $("#game-play-messages").html("YOUR TURN! Click on the colors below in the order they were shown. <br> Current Level: " + currentLevel);
     $(".playing-colour-area").addClass("cursor-hover");
@@ -223,25 +285,40 @@ function checkUserInput(currentLevel, sequence) {
     var userSequence = [];
     var i = 0;
     $(".playing-colour-area").click(function() {
-        if ($(this).attr("value") == sequence[i]) {
-            userSequence.push($(this).attr("value"));
-            $("#game-play-messages").html("Nice! Keep going. <br> Current Level: " + currentLevel);
-            i++;
-            if (i == sequence.length) {
-                $("#game-play-messages").html("Good job! Starting next level");
-                d.resolve(sequence);
+        if (turnStarted === true) {
+            if ($(this).attr("value") == sequence[i]) {
+                userSequence.push($(this).attr("value"));
+                clearColours();
+                $(".image-simon").addClass($(this).attr("class")).removeClass("playing-colour-area");
+                $("#game-play-messages").html("Nice! Keep going. <br> Current Level: " + currentLevel);
+                i++;
+                if (i == sequence.length) {
+                    $("#game-play-messages").html("Good job! Starting next level");
+                    $(".playing-colour-area").removeClass("cursor-hover");
+                    setTimeout(() => {
+                        clearColours();
+                        $(".image-simon").addClass("bg-colour-main");
+                        turnStarted = false;
+                        userSequence = [];
+                        d.resolve(sequence);
+                    }, 500);
+                }
+            } else if ($(this).attr("value") != sequence[i]) {
+                $("#game-play-messages").html("Oh no! Wrong colour...");
+                $(".playing-colour-area").removeClass("cursor-hover");
+                turnStarted = false;
+                userSequence = [];
+                setTimeout(() => {
+                    d.reject("Game Over")
+                }, 1000);
             }
-        } else if ($(this).attr("value") != sequence[i]) {
-            sequence = [];
-            userSequence = [];
-            gameStarted = false;
-            d.reject("Game Over");
         }
     });
 
-    $('button').click(function(){
+    $('button').click(function() {
+        turnStarted = false;
         d.reject($(this).attr("id"));
     });
-    
+
     return d.promise()
 }

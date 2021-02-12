@@ -19,17 +19,22 @@ function displayInstructions(stepNumber) {
         <p class="text-justify-center">${instructionsContent[stepNumber][2]}</p>`
     );
 
-    // Footer button: if instruction is clicked during game plat, display CONTINUE instead of start.
+    // Footer button: if instruction is clicked during game play, display CONTINUE instead of start.
     var gameStarted = localStorage.getItem('gameStarted');
+    var savedProgress = localStorage.getItem('savedProgress');
 
-    if (gameStarted == false) {
+    if (gameStarted == "false" || gameStarted === undefined) {
         $("#game-footer").html(
         `<button onclick="checkSavedProgress()">START</button>`
-    );
-    } else {
+        );
+    } else if (gameStarted == "true" && savedProgress == "true") {
         $("#game-footer").html(
         `<button onclick="gamePlay(parseInt(localStorage.getItem('savedLevel')))">CONTINUE</button>`
-    );
+        );
+    } else {
+        $("#game-footer").html(
+        `<button onclick="gamePlay(1)">CONTINUE</button>`
+        );
     };
 
     $("#game-footer").addClass("flex-justify-center");

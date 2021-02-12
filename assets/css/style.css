@@ -98,7 +98,8 @@ p {
     font-size: 1.65rem;
     letter-spacing: 1.2px;
     font-weight: 500;
-    margin: 2.5vh 2.5vw;
+    padding: 2.5vh 2.5vw;
+    margin: 0;
 }
 
 #game-header {
@@ -173,4 +174,22 @@ button:active {
 
 .cursor-hover:active {
     transform: scale(0.80);
+}
+
+form>input{
+    border: none;
+    border-radius: 5px;
+    height: 70%;
+    margin: 0 2vw;
+    font-family: inherit;
+    color: inherit;
+    font-size: inherit;
+}
+
+form>button{
+    margin-right: 2vw;
+}
+
+form>input:focus{
+    outline: var(--colour-text-main) solid 2px;
 }
