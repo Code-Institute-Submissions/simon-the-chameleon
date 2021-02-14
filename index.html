@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <title>Simon, the Chameleon!</title>
-
+        <!-- Using EmailJs exmaple from Code Institute Full Stack Developer Course - Intercative Front End -->
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
         <script type="text/javascript"> 
             (function() {
@@ -21,14 +21,17 @@
     <body class="flex-container-column bg-colour-main">
         <div class="flex-container-row" id="game-header">
             <h2 class="text-justify-center flex-item-grow">Simon, the Chameleon!</h2>
-            <h2><i class="flex-item fas fa-cog"></i></h2>
+            <h2 id="settings">
+                <i class="flex-item fas fa-cog cursor-hover" id="settings-button"></i>
+            </h2>
         </div>
         <div class="bg-colour-playable-area flex-item-center flex-container-column" id="game-playable-area"></div>
         <div class="flex-container-row" id="game-footer"></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-        <script src="assets/js/simonCode.js"></script>
+        <script src="assets/js/simonInitial.js"></script>
         <script src="assets/js/simonInstructionsContent.js"></script>
         <script src="assets/js/simonGamePlay.js"></script>
         <script src="assets/js/simonEndGame.js"></script>
+        <script src="assets/js/simonSettings.js"></script>
     </body>
 </html>

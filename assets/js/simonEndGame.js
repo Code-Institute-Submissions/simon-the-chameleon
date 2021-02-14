@@ -14,7 +14,7 @@ function displayEndGame(level) {
     $("#game-footer").addClass("flex-justify-center");
 
     $("#game-footer").html(
-        `<button onclick="gamePlay(1)">Restart</button>`
+        `<button onclick="gamePlay(1)">Restart  <i class="flex-item fas fa-redo"></i></button>`
     );
     return;
 }
@@ -23,7 +23,7 @@ function displayEndGame(level) {
 function sendMail(contactForm, level) {
     $("form button").html("Sending...");
 
-    setTimeout(() => {emailjs.send("service_wofndpb","template_8yl86a3",{
+    emailjs.send("service_wofndpb","template_8yl86a3",{
         "level": level,
         "form_email": contactForm.userEmail.value
     })
@@ -34,6 +34,7 @@ function sendMail(contactForm, level) {
         function(error) {
             alert("Email could not be sent. Error:" + error);
         }
-    );}, 5000)
-    return false;  // To block from loading a new page
+    );
+    
+    return false; 
 }

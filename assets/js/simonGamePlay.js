@@ -1,9 +1,11 @@
 // General function for the sequencing of steps
 function gamePlay(currentLevel) {
-    if (currentLevel == 1 & localStorage.getItem("savedSequence") == "") {
-        var sequenceOrder = [];
+    var sequenceOrder;
+
+    if (currentLevel == 1 & (localStorage.getItem("savedSequence") == "" || localStorage.getItem("savedSequence") == null)) {
+        sequenceOrder = [];
     } else {
-        var sequenceOrder = JSON.parse(localStorage.getItem("savedSequence"));
+        sequenceOrder = JSON.parse(localStorage.getItem("savedSequence"));
     };
 
     localStorage.setItem('gameStarted', true);
@@ -159,6 +161,12 @@ function countDown(currentLevel, passSequence) {
         clearInterval(interval);
         d.reject($(this).attr("id"));
     });
+    $("#settings-button.fa-cog").click(function() {
+        if (localStorage.settingsOpen == "true") {
+            clearInterval(interval);
+            d.reject("Settings");
+        };
+    });
 
     return d.promise();
 }
@@ -167,7 +175,6 @@ function displayColour(currentLevel, sequenceOrder) {
     return new Promise(function(resolve, reject) {
         var newColour = Math.floor(Math.random() * 5);
         var t;
-
         if (newColour != sequenceOrder[currentLevel - 2]) {
             sequenceOrder.push(newColour);
         } else if (newColour < 4) {
@@ -265,6 +272,11 @@ function displayColour(currentLevel, sequenceOrder) {
             $(".image-simon").addClass("bg-colour-main");
             reject($(this).attr("id"));
         });
+        $("#settings-button.fa-cog").click(function() {
+            clearInterval(t);
+            $(".image-simon").addClass("bg-colour-main");
+            reject("Settings");
+        });
     });
 }
 
@@ -318,6 +330,10 @@ function checkUserInput(currentLevel, sequence) {
     $('button').click(function() {
         turnStarted = false;
         d.reject($(this).attr("id"));
+    });
+    $('#settings-button.fa-cog').click(function() {
+        turnStarted = false;
+        d.reject("Settings");
     });
 
     return d.promise()

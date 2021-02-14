@@ -129,7 +129,7 @@ p {
 
 .image-instruction {
     max-width: 60vw;
-    max-height: 100%;
+    height: 30vh;
 }
 
 button {
@@ -192,4 +192,20 @@ form>button{
 
 form>input:focus{
     outline: var(--colour-text-main) solid 2px;
+}
+
+.image-theme{
+    height: 5vw;
+    width: 5vw;
+    margin: 0 2vw;
+}
+
+.active-theme{
+    border: 2px solid var(--colour-text-main); 
+}
+
+.game-info-text{
+    padding-top: 0;
+    padding-bottom: 0;
+    font-weight: 300;
 }

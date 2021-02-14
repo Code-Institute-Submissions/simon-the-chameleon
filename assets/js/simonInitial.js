@@ -1,10 +1,11 @@
 // On page load, display welcome content.
 $.when( $.ready ).then(function() {
-  displayWelcomeContent();
+    localStorage.setItem('gameStarted', false);
+    if (localStorage.getItem("selectedTheme") != null || localStorage.getItem("selectedTheme") != undefined) {
+        changeTheme(localStorage.getItem("selectedTheme"));
+    };
+    displayWelcomeContent();
 });
-
-// Declaring project variables and local storage variables.
-var gameStarted;
 
 // Function to load Welcome content
 function displayWelcomeContent() {
@@ -26,7 +27,7 @@ function checkSavedProgress() {
     if (userSavedProgress == 'false' || userSavedProgress === undefined) {
         gamePlay(1);
     } else {
-         displayContinueGameQuestion();
+        displayContinueGameQuestion();
     };
 }
 

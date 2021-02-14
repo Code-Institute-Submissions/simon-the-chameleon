@@ -3,7 +3,7 @@ function displayInstructions(stepNumber) {
     var instructionsContent = [
         ["instructionsStepOne", "starting the game", "Click on the START button below to start the game. Simon will change his color once the countdown completes."],
         ["instructionsStepTwo", "your turn to play", "When Simon finishes his sequence, it is your turn to play. Click on the colours below Simon on the same order they were shown to move on to the next level"],
-        ["instructionsStepThree", "game over", "If you click the wrong colour, it is game over! But don't be sad, you can start a new game by clicking on the RESTART button"],
+        ["instructionsStepThree", "game over", "If you click the wrong colour you can replay the level by clicking OK on the alert box! Or click CANCEL to end the game."],
         ["instructionsStepFour", "leaving or ending the game", "If you wish to stop the game and resume at a later day, click the SAVE & LEAVE button and your progress will be saved. If you wish to end the game to start a new run, click the END GAME button."],
         ["instructionsStepFive", "sending your results to yourself", "Once the game is over, you can send the results to yourself by entering your email and clicking SEND"],
         ["instructionsStepSix", "changing game settings", "You can change the game background colours by clicking on the settings button and chosing a diferent theme"]
