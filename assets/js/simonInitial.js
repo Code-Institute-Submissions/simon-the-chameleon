@@ -1,13 +1,17 @@
 // On page load, display welcome content.
-$.when( $.ready ).then(function() {
+$.when($.ready).then(function() {
     localStorage.setItem('gameStarted', false);
+    localStorage.setItem("instructionsOpen", false);
     if (localStorage.getItem("selectedTheme") != null || localStorage.getItem("selectedTheme") != undefined) {
         changeTheme(localStorage.getItem("selectedTheme"));
-    };
+    }
+    if (localStorage.getItem("strictOption") === null || localStorage.getItem("strictOption") === undefined) {
+        localStorage.setItem("strictOption", "OFF");
+    }
     displayWelcomeContent();
 });
 
-// Function to load Welcome content
+// Load Welcome content
 function displayWelcomeContent() {
     $("#game-playable-area").html(
         `<img class="image-simon flex-item-center" src="assets/images/simon-animation.gif" alt="Simon changing colours">
@@ -16,11 +20,11 @@ function displayWelcomeContent() {
     );
     $("#game-footer").html(
         `<button onclick="displayInstructions(0)">Instructions</button>
-        <button onclick="checkSavedProgress()">Start</button>`
+        <button id="initial-start-button" onclick="checkSavedProgress()">Start</button>`
     );
 }
 
-// Function to check if user has saved progress
+// Check if user has saved progress
 function checkSavedProgress() {
     var userSavedProgress = localStorage.getItem('savedProgress');
 
@@ -28,33 +32,33 @@ function checkSavedProgress() {
         gamePlay(1);
     } else {
         displayContinueGameQuestion();
-    };
+    }
 }
 
-// Function for continuing last progress
+// Continuing last progress
 function displayContinueGameQuestion() {
     $("#game-playable-area").html(
         `<h4 class="flex-item-center text-justify-center">Welcome back!</h4>
         <p class="flex-item-center text-justify-center">If you like to continue your previous game click CONTINUE.<br>If you wish to start a new game, click NEW GAME.</p>`
     );
 
-    $("#game-footer").removeClass("flex-justify-center");
-    
+    $("#game-footer").addClass("flex-justify-center");
+
     $("#game-footer").html(
         `<button id="button-load-previous-game">Continue</button>
         <button id="button-start-new-game">New game</button>`
     );
 
-    $("#button-load-previous-game").click(function(){
-        var controller = new AbortController();
-        controller.abort();
+    $("#button-load-previous-game").click(function() {
+        $("#game-footer").removeClass("flex-justify-center");
         gamePlay(parseInt(localStorage.getItem('savedLevel')));
     });
 
-    $("#button-start-new-game").click(function(){
+    $("#button-start-new-game").click(function() {
         localStorage.setItem('savedProgress', false);
         localStorage.setItem('savedLevel', 0);
         localStorage.setItem('savedSequence', "");
+        $("#game-footer").removeClass("flex-justify-center");
         gamePlay(1);
     });
 }

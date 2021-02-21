@@ -1,211 +1,335 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&family=Sunshiney&display=swap');
 
 /* Declaring color variables */
 :root {
-  --bg-colour-main: #996633;
-  --bg-colour-playable-area: #663300;
-  --colour-text-main: #fffccc;
-  --bg-colour-play-red: #C00000;
-  --bg-colour-play-blue: #0070C0;
-  --bg-colour-play-yellow: #FFC000;
-  --bg-colour-play-green: #00B050;
-  --bg-colour-play-custom: #FF6600;
+	--bg-colour-main: #996633;
+	--bg-colour-playable-area: #663300;
+	--colour-text-main: #fffccc;
+	--bg-colour-play-red: #C00000;
+	--bg-colour-play-blue: #0070C0;
+	--bg-colour-play-yellow: #FFC000;
+	--bg-colour-play-green: #00B050;
+	--bg-colour-play-custom: #FF6600;
 }
 
 /* Utilities classes */
 .flex-container-column {
-    display:flex;
-    flex-direction: column;
-    justify-content: space-around;
-    overflow: hidden;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-ms-flex-pack: distribute;
+	justify-content: space-around;
+	overflow: hidden;
 }
 
 .flex-container-row {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    overflow: hidden;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	overflow: hidden;
 }
 
 .flex-justify-center {
-    justify-content: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
 }
 
 .text-justify-center {
-    text-align: center;
+	text-align: center;
 }
 
 .flex-item-grow {
-    flex-grow: 1;
+	-webkit-box-flex: 1;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
 }
 
 .flex-item-center {
-    align-self: center;
+	-ms-flex-item-align: center;
+	-ms-grid-row-align: center;
+	align-self: center;
 }
 
 /* Color classes */
 .bg-colour-main {
-    background-color: var(--bg-colour-main);
+	background-color: var(--bg-colour-main);
 }
 
 .bg-colour-playable-area {
-    background-color: var(--bg-colour-playable-area);
+	background-color: var(--bg-colour-playable-area);
 }
 
 .bg-colour-play-red {
-    background-color: var(--bg-colour-play-red);
+	background-color: var(--bg-colour-play-red);
 }
 
 .bg-colour-play-blue {
-    background-color: var(--bg-colour-play-blue);
+	background-color: var(--bg-colour-play-blue);
 }
 
 .bg-colour-play-yellow {
-    background-color: var(--bg-colour-play-yellow);
+	background-color: var(--bg-colour-play-yellow);
 }
 
 .bg-colour-play-green {
-    background-color: var(--bg-colour-play-green);
+	background-color: var(--bg-colour-play-green);
 }
 
 .bg-colour-play-custom {
-    background-color: var(--bg-colour-play-custom);
+	background-color: var(--bg-colour-play-custom);
 }
 
 /* Elements setup */
 body {
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-    color: var(--colour-text-main);
-    height: 100vh;
-    margin: 0 2.5vw;
+	font-family: "Roboto", sans-serif;
+	font-weight: 300;
+	color: var(--colour-text-main);
+	height: 100vh;
+	margin: 0 2.5vw;
 }
 
 h2 {
-    font-family: "Sunshiney", sans-serif;
-    font-size: 3rem;
-    margin: 0;
+	font-family: "Sunshiney", sans-serif;
+	font-size: 3rem;
+	margin: 0;
 }
 
 h4 {
-    font-family: "Sunshiney", sans-serif;
-    font-size: 2.5rem;
-    margin: 2.5vh 0 2.5vh;
+	font-family: "Sunshiney", sans-serif;
+	font-size: 2.5rem;
+	margin: 2.5vh 0 2.5vh;
 }
 
 p {
-    font-size: 1.65rem;
-    letter-spacing: 1.2px;
-    font-weight: 500;
-    padding: 2.5vh 2.5vw;
-    margin: 0;
+	font-size: 1.65rem;
+	letter-spacing: 1.2px;
+	font-weight: 500;
+	padding: 2.5vh 2.5vw;
+	margin: 0;
 }
 
 #game-header {
-    height: 15vh;
+	height: 15vh;
 }
 
 #game-footer {
-    height: 12.5vh;
+	height: 12.5vh;
 }
 
 #game-playable-area {
-    height: 72.5vh;
-    width: 100%;
+	height: 72.5vh;
+	width: 100%;
     border-radius: 30px;
+    overflow: visible;
 }
 
 .image-simon {
-    height: 35vh;
-    width: 35vh;
-    /* Image masking found in: https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image */
-    mask-image: url(../images/simon-mask.png);
-    -webkit-mask-image: url(../images/simon-mask.png);
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    margin: 5vh;
+	height: 35vh;
+	/* Image masking found in: https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image */
+	mask-image: url(../images/simon-mask.png);
+	-webkit-mask-image: url(../images/simon-mask.png);
+	-webkit-mask-size: contain;
+	mask-size: contain;
+	margin: 5vh;
+}
+
+#initial-start-button {
+	position: absolute;
+	left: 45vw;
 }
 
 .image-instruction {
-    max-width: 60vw;
-    height: 30vh;
+	height: 40vh;
 }
 
 button {
-    background-color: transparent;
-    border: 5px solid var(--colour-text-main);
-    border-radius: 10px;
-    color: var(--colour-text-main);
-    font-size: 1.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
+	background-color: transparent;
+	border: 5px solid var(--colour-text-main);
+	border-radius: 10px;
+	color: var(--colour-text-main);
+	font-size: 1.65rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin: 0.5rem;
 }
 
-button:hover, button:focus, button:active {
-    /* Changing cursor to pointer found in: https://www.w3docs.com/snippets/css/how-to-change-cursor-on-hover-in-css.html */
-    cursor: pointer;
-    background-color: var(--bg-colour-playable-area);
-    outline: none;
+button:hover,
+button:focus,
+button:active {
+	/* Changing cursor to pointer found in: https://www.w3docs.com/snippets/css/how-to-change-cursor-on-hover-in-css.html */
+	cursor: pointer;
+	background-color: var(--bg-colour-playable-area);
+	outline: none;
 }
 
 button:active {
-    transform: scale(0.75);
+	-webkit-transform: scale(0.75);
+	-ms-transform: scale(0.75);
+	transform: scale(0.75);
 }
 
 #playing-area {
-    width: 80vw;
-    height: 10vh;
-    background-color: var(--bg-colour-main);
-    border-radius: 10px;
-    padding: 0 1vw;
+	width: 80vw;
+	height: 10vh;
+	background-color: var(--bg-colour-main);
+	border-radius: 10px;
+	padding: 0 1vw;
 }
 
 .playing-colour-area {
-    width: 15vw;
-    height: 85%;
-    border-radius: 10px;
+	width: 15vw;
+	height: 85%;
+	border-radius: 10px;
 }
 
-.cursor-hover:hover, .cursor-hover:focus, .cursor-hover:active {
-    /* Changing cursor to pointer found in: https://www.w3docs.com/snippets/css/how-to-change-cursor-on-hover-in-css.html */
-    cursor: pointer;
+.cursor-hover:hover,
+.cursor-hover:focus,
+.cursor-hover:active {
+	/* Changing cursor to pointer found in: https://www.w3docs.com/snippets/css/how-to-change-cursor-on-hover-in-css.html */
+	cursor: pointer;
 }
 
 .cursor-hover:active {
-    transform: scale(0.80);
+	-webkit-transform: scale(0.80);
+	-ms-transform: scale(0.80);
+	transform: scale(0.80);
 }
 
-form>input{
-    border: none;
-    border-radius: 5px;
-    height: 70%;
-    margin: 0 2vw;
-    font-family: inherit;
-    color: inherit;
-    font-size: inherit;
+form>input {
+	border: none;
+	border-radius: 5px;
+	height: 70%;
+	margin: 0 2vw;
+	font-family: inherit;
+	color: inherit;
+	font-size: inherit;
 }
 
-form>button{
-    margin-right: 2vw;
+#strict-mode {
+	background-color: var(--bg-colour-main);
+	height: 100%;
+	color: var(--colour-text-main);
 }
 
-form>input:focus{
-    outline: var(--colour-text-main) solid 2px;
+form>button {
+	margin-right: 2vw;
 }
 
-.image-theme{
-    height: 5vw;
-    width: 5vw;
-    margin: 0 2vw;
+form>input:focus {
+	outline: var(--colour-text-main) solid 2px;
 }
 
-.active-theme{
-    border: 2px solid var(--colour-text-main); 
+.image-theme {
+	height: 10vh;
+	margin: 0 2vw;
 }
 
-.game-info-text{
-    padding-top: 0;
-    padding-bottom: 0;
-    font-weight: 300;
+.active-theme {
+	border: 2px solid var(--colour-text-main);
+}
+
+.game-info-text {
+	padding-top: 0;
+	padding-bottom: 0;
+	font-weight: 300;
+}
+
+/* Media queries for responsiviness */
+/* Desktop screens */
+@media only screen and (max-width: 1200px) {
+	html {
+		font-size: 16px;
+	}
+}
+
+/* Tablet screens */
+@media only screen and (max-width: 768px) {
+	html {
+		font-size: 12px;
+	}
+	p {
+		padding: 1.5vh 1.5vw;
+	}
+}
+
+/* Mobile and tablet screens */
+@media only screen and (max-width: 450px) {
+	html {
+		font-size: 10px;
+    }
+    
+	p {
+		padding: 1.2vh 1.2vw;
+    }
+    
+	.flex-container-row {
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		-webkit-box-pack: space-evenly;
+		-ms-flex-pack: space-evenly;
+		justify-content: space-evenly;
+    }
+    
+	.image-instruction {
+		height: 30vh;
+		-webkit-box-ordinal-group: 0;
+		-ms-flex-order: -1;
+		order: -1;
+    }
+    
+	.image-simon {
+		height: 25vh;
+    }
+
+	#instruction-image-row p {
+		-webkit-box-flex: 1;
+		-ms-flex: 1 0 46.5%;
+		flex: 1 0 46.5%;
+		text-align: center;
+    }
+    
+	#game-footer {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-flow: column wrap;
+		flex-flow: column wrap;
+	}
+	#initial-start-button {
+		position: static;
+    }
+    
+	#playing-area {
+		height: 20vh;
+    }
+    
+	.playing-colour-area {
+		width: 25vw;
+		height: 45%;
+    }
+    
+	button {
+		margin: 0;
+	}
 }

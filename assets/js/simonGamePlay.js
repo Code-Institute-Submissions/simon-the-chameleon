@@ -1,12 +1,16 @@
+var interval;
+
 // General function for the sequencing of steps
 function gamePlay(currentLevel) {
     var sequenceOrder;
 
-    if (currentLevel == 1 & (localStorage.getItem("savedSequence") == "" || localStorage.getItem("savedSequence") == null)) {
+    localStorage.setItem("instructionsOpen", false);
+    
+    if (currentLevel == 1 && (localStorage.getItem("savedSequence") == "" || localStorage.getItem("savedSequence") == null)) {
         sequenceOrder = [];
     } else {
         sequenceOrder = JSON.parse(localStorage.getItem("savedSequence"));
-    };
+    }
 
     localStorage.setItem('gameStarted', true);
     displayGamePlay();
@@ -14,7 +18,7 @@ function gamePlay(currentLevel) {
     var loopForLevels = function(m, currentLevel) {
         countDown(currentLevel, sequenceOrder)
             .then(function(passSequence) {
-                return displayColour(currentLevel, passSequence)
+                return displayColour(currentLevel, passSequence);
             }, function(buttonClicked) {
                 return Promise.reject(buttonClicked);
             })
@@ -48,10 +52,10 @@ function gamePlay(currentLevel) {
                                     displayEndGame(currentLevel);
                                 } else {
                                     gamePlay(currentLevel);
-                                };
+                                }
                                 break;
                             case "Game Over":
-                                if (confirm("Wrong colour! Would you like to restart the level?")) {
+                                if (localStorage.getItem("strictOption") == "OFF") {
                                     gamePlay(currentLevel);
                                 } else {
                                     localStorage.setItem('savedProgress', false);
@@ -59,7 +63,7 @@ function gamePlay(currentLevel) {
                                     localStorage.setItem('savedSequence', "");
                                     localStorage.setItem('gameStarted', false);
                                     displayEndGame(currentLevel);
-                                };
+                                }
                                 break;
                             case "button-leave":
                                 if (currentLevel == 1) {
@@ -69,7 +73,7 @@ function gamePlay(currentLevel) {
                                         return gamePlay(1);
                                     }
                                 } else {
-                                    alert("Progress saved at level: " + localStorage.getItem("savedLevel"))
+                                    alert("Progress saved at level: " + localStorage.getItem("savedLevel"));
                                     location.reload();
                                 }
                                 break;
@@ -92,7 +96,7 @@ function gamePlay(currentLevel) {
                             displayEndGame(currentLevel);
                         } else {
                             gamePlay(currentLevel);
-                        };
+                        }
                         break;
                     case "button-leave":
                         if (currentLevel == 1) {
@@ -102,7 +106,7 @@ function gamePlay(currentLevel) {
                                 return gamePlay(1);
                             }
                         } else {
-                            alert("Progress saved at level: " + localStorage.getItem("savedLevel"))
+                            alert("Progress saved at level: " + localStorage.getItem("savedLevel"));
                             location.reload();
                         }
                         break;
@@ -113,10 +117,9 @@ function gamePlay(currentLevel) {
             });
     };
     loopForLevels(0, currentLevel);
-    return;
 }
 
-// Functions for gameplay steps
+// Gameplay steps - initial settings
 function displayGamePlay() {
     $("#game-playable-area").html(
         `<img class="image-simon flex-item-center bg-colour-main" src="assets/images/simon-eye.png" alt="Simon changing colours">
@@ -137,11 +140,9 @@ function displayGamePlay() {
         <button id="button-leave">Save & Leave</button>
         <button id="button-end-game">End Game</button>`
     );
-    return;
 }
 
-var interval;
-
+// Gameplay steps - initial countdown
 function countDown(currentLevel, passSequence) {
     var d = $.Deferred();
     var timeSeconds = 3;
@@ -165,12 +166,13 @@ function countDown(currentLevel, passSequence) {
         if (localStorage.settingsOpen == "true") {
             clearInterval(interval);
             d.reject("Settings");
-        };
+        }
     });
 
     return d.promise();
 }
 
+// Gameplay steps - display the sequence colours
 function displayColour(currentLevel, sequenceOrder) {
     return new Promise(function(resolve, reject) {
         var newColour = Math.floor(Math.random() * 5);
@@ -181,7 +183,7 @@ function displayColour(currentLevel, sequenceOrder) {
             sequenceOrder.push(newColour + 1);
         } else if (newColour == 4) {
             sequenceOrder.push(newColour - 1);
-        };
+        }
 
         // Use of wildcard for classes found in: https://stackoverflow.com/questions/2644299/jquery-removeclass-wildcard
         $(".image-simon").removeClass(function(index, className) {
@@ -197,10 +199,10 @@ function displayColour(currentLevel, sequenceOrder) {
                         m++;
                         if (m == sequenceOrder.length) {
                             resolve(sequenceOrder);
-                        };
+                        }
                         if (m < sequenceOrder.length) {
-                            loopForSwitch(m++)
-                        };
+                            loopForSwitch(m++);
+                        }
                     }, 750);
                     break;
                 case 1:
@@ -210,10 +212,10 @@ function displayColour(currentLevel, sequenceOrder) {
                         m++;
                         if (m == sequenceOrder.length) {
                             resolve(sequenceOrder);
-                        };
+                        }
                         if (m < sequenceOrder.length) {
-                            loopForSwitch(m++)
-                        };
+                            loopForSwitch(m++);
+                        }
                     }, 750);
                     break;
                 case 2:
@@ -223,10 +225,10 @@ function displayColour(currentLevel, sequenceOrder) {
                         m++;
                         if (m == sequenceOrder.length) {
                             resolve(sequenceOrder);
-                        };
+                        }
                         if (m < sequenceOrder.length) {
-                            loopForSwitch(m++)
-                        };
+                            loopForSwitch(m++);
+                        }
                     }, 750);
                     break;
                 case 3:
@@ -236,10 +238,10 @@ function displayColour(currentLevel, sequenceOrder) {
                         m++;
                         if (m == sequenceOrder.length) {
                             resolve(sequenceOrder);
-                        };
+                        }
                         if (m < sequenceOrder.length) {
-                            loopForSwitch(m++)
-                        };
+                            loopForSwitch(m++);
+                        }
                     }, 750);
                     break;
                 case 4:
@@ -249,23 +251,23 @@ function displayColour(currentLevel, sequenceOrder) {
                         m++;
                         if (m == sequenceOrder.length) {
                             resolve(sequenceOrder);
-                        };
+                        }
                         if (m < sequenceOrder.length) {
-                            loopForSwitch(m++)
-                        };
+                            loopForSwitch(m++);
+                        }
                     }, 750);
                     break;
                 default:
                     $(".image-simon").addClass("bg-colour-main");
                     if (m == sequenceOrder.length) {
                         resolve(sequenceOrder);
-                    };
+                    }
                     if (m < sequenceOrder.length) {
-                        loopForSwitch(m++)
-                    };
+                        loopForSwitch(m++);
+                    }
                     m++;
             }
-        }
+        };
         loopForSwitch(0);
         $('button').click(function() {
             clearInterval(t);
@@ -280,6 +282,7 @@ function displayColour(currentLevel, sequenceOrder) {
     });
 }
 
+// Remove all colours form the image
 function clearColours() {
     // Use of wildcard for classes found in: https://stackoverflow.com/questions/2644299/jquery-removeclass-wildcard
     $(".image-simon").removeClass(function(index, className) {
@@ -287,6 +290,7 @@ function clearColours() {
     });
 }
 
+// Gameplay steps - verify user sequence
 function checkUserInput(currentLevel, sequence) {
     var d = $.Deferred();
     var turnStarted = true;
@@ -321,7 +325,7 @@ function checkUserInput(currentLevel, sequence) {
                 turnStarted = false;
                 userSequence = [];
                 setTimeout(() => {
-                    d.reject("Game Over")
+                    d.reject("Game Over");
                 }, 1000);
             }
         }
@@ -336,5 +340,5 @@ function checkUserInput(currentLevel, sequence) {
         d.reject("Settings");
     });
 
-    return d.promise()
+    return d.promise();
 }
