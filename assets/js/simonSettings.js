@@ -1,7 +1,6 @@
 var previousContentPlay;
 var previousContentFooter;
 var clickCounter = 1;
-var strictModeOption = localStorage.getItem("strictOption");
 
 // Settings button clicked event listener. If first time clicked, display the settings. If second time, close settigns.
 $("#settings-button").click(function() {
@@ -20,6 +19,8 @@ $("#settings-button").click(function() {
 
 function displaySettings(clickCounter, contentOne, contentTwo) {
     if (clickCounter == 1) {
+        var strictModeOption = localStorage.getItem("strictOption");
+
         $("#settings-button").toggleClass("fa-cog").toggleClass("fa-times");
 
         $("#game-playable-area").html(

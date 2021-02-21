@@ -28,7 +28,7 @@ function displayWelcomeContent() {
 function checkSavedProgress() {
     var userSavedProgress = localStorage.getItem('savedProgress');
 
-    if (userSavedProgress == 'false' || userSavedProgress === undefined) {
+    if (userSavedProgress == 'false' || userSavedProgress === undefined || userSavedProgress === null) {
         gamePlay(1);
     } else {
         displayContinueGameQuestion();
