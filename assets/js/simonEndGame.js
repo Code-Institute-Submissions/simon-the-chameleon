@@ -17,6 +17,10 @@ function displayEndGame(level) {
     $("#game-footer").html(
         `<button onclick="gamePlay(1)">Restart  <i class="flex-item fas fa-redo"></i></button>`
     );
+
+    $("#simon-title").addClass("cursor-hover").click(function () {
+        location.reload();
+    });
 }
 
 // Sending Email example from Code Institue Full Stack Course - Interactive FrontEnd Module https://codeinstitute.net/

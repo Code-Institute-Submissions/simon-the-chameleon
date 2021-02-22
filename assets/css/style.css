@@ -224,7 +224,8 @@ form>input {
 	margin: 0 2vw;
 	font-family: inherit;
 	color: inherit;
-	font-size: inherit;
+    font-size: inherit;
+    padding: 0 0.4rem;
 }
 
 #strict-mode {

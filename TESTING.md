@@ -65,9 +65,9 @@ The Developer Tools of Google Chrome (v.88) on desktop was used to verify respon
    | -------- | :----------------------------------------------------------- | :---------- |
    | 1.1      | Load the Simon, the Chameleon! webpage and verify the Welcome content is displayed. | Pass        |
    | 1.2      | Click on the "Settings" button (cog symbol) and verify the settings content is displayed, then exit the Settings by clicking the "X" symbol and verify the Welcome content is displayed. | Pass        |
-   | 1.3      | Click on the "Start" button and verify the game starting count down is displayed, then reload the page and verify the Welcome content is displayed. | Fail - 1    |
+   | 1.3      | Click on the "Start" button and verify the game starting count down is displayed, then reload the page and verify the Welcome content is displayed. | Fail*    |
 
-   1: The game was suggesting that there was data saved even if there was no Local Storage. This was fixed by expanding the if condition on chackSavedProgress function to consider savedProgress === null.
+   *: The game was suggesting that there was data saved even if there was no Local Storage. This was fixed by expanding the if condition on chackSavedProgress function to consider savedProgress === null.
 
 2. **Instructions**:
 
@@ -94,9 +94,9 @@ The Developer Tools of Google Chrome (v.88) on desktop was used to verify respon
    | 3.8      | Click on the "New Game" button and verify the game play starts on level 1. | Pass        |
    | 3.9      | Click on the "End Game" button, and verify the confirmation prompt to proceed is displayed. Click "Cancel" and verify the level is restarted. | Pass        |
    | 3.9      | Click on the "End Game" button and click "Ok" on the prompt. Verify the "Game Over" content is displayed. | Pass        |
-   | 3.10     | Click on the "Restart" button and verify the game play starts on level 1. Ensure the Strict mode is OFF on the Settings, and purposely click the wrong colour. Verify the level is re-started. Continue to play until a certain level (record the level achieved), then end the game as on step 3.9. | Fail - 2    |
+   | 3.10     | Click on the "Restart" button and verify the game play starts on level 1. Ensure the Strict mode is OFF on the Settings, and purposely click the wrong colour. Verify the level is re-started. Continue to play until a certain level (record the level achieved), then end the game as on step 3.9. | Fail**    |
 
-   2: The Strict Mode reads null. This was fixed by moving the variable declaration of strictModeOption to within the displaySettings function scope.
+   **: The Strict Mode reads null. This was fixed by moving the variable declaration of strictModeOption to within the displaySettings function scope.
 
 4. **Game Over**:
 
@@ -104,6 +104,7 @@ The Developer Tools of Google Chrome (v.88) on desktop was used to verify respon
    | -------- | :----------------------------------------------------------- | :---------- |
    | 4.1      | From the Game Over content, verify the highest level displayed matches the current level being played before the game finished. | Pass        |
    | 4.2      | From the Game Over content, click on the "Settings" button (cog symbol) and verify the settings content is displayed, then exit the Settings by clicking the "X" symbol and verify the Game Over content is displayed. | Pass        |
+   | 4.3      | From the Game Over content, click on the "Simon, the Chameleon" title and verify the Welcome content is displayed. | Pass        |
 
 5. **Email results**:
 
