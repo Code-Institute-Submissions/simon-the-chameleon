@@ -148,7 +148,7 @@ function countDown(currentLevel, passSequence) {
     var timeSeconds = 3;
 
     interval = setInterval(function() {
-        $("#game-play-messages").html("Starting in: " + timeSeconds + "...");
+        $("#game-play-messages").html("Starting in: " + timeSeconds + "... <br> Current Level: " + currentLevel);
         timeSeconds = timeSeconds - 1;
         if (timeSeconds < 0) {
             clearInterval(interval);

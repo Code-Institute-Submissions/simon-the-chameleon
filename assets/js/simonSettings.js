@@ -25,17 +25,17 @@ function displaySettings(clickCounter, contentOne, contentTwo) {
 
         $("#game-playable-area").html(
             `<h4 class="text-justify-center">Settings</h4>
-        <p class="text-justify-center">Choose theme:</p>
-        <div class="flex-container-row flex-justify-center">
-            <img id="theme-warm" class="image-theme cursor-hover" src="assets/images/simon-theme-warm.png" alt="Simon warm theme">
-            <img id="theme-cool" class="image-theme cursor-hover" src="assets/images/simon-theme-cool.png" alt="Simon cool theme">
-            <img id="theme-pastel" class="image-theme cursor-hover" src="assets/images/simon-theme-pastel.png" alt="Simon pastel theme">
-        </div>
-        <p>Strict mode: <span id="strict-mode" class="cursor-hover"s>${strictModeOption}</span></p>
-        <h4 class="text-justify-center">About the game</h4>
-        <p class="game-info-text">Simon, the Chameleon! was developed as a Project submission of the Full Stack Code Institute Course.</p>
-        <p class="game-info-text">Version: 1.0</p>
-        <p class="game-info-text">Developed by: Isabela Venter</p>`
+            <p class="text-justify-center">Choose theme:</p>
+            <div class="flex-container-row flex-justify-center">
+                <img id="theme-warm" class="image-theme cursor-hover" src="assets/images/simon-theme-warm.png" alt="Simon warm theme">
+                <img id="theme-cool" class="image-theme cursor-hover" src="assets/images/simon-theme-cool.png" alt="Simon cool theme">
+                <img id="theme-pastel" class="image-theme cursor-hover" src="assets/images/simon-theme-pastel.png" alt="Simon pastel theme">
+            </div>
+            <p>Strict mode: <span id="strict-mode" class="cursor-hover"s>${strictModeOption}</span></p>
+            <h4 class="text-justify-center">About the game</h4>
+            <p class="game-info-text">Simon, the Chameleon! was developed as a Project submission of the Full Stack Code Institute Course.</p>
+            <p class="game-info-text">Version: 1.0</p>
+            <p class="game-info-text">Developed by: Isabela Venter</p>`
         );
 
         if (localStorage.getItem("selectedTheme") != null || localStorage.getItem("selectedTheme") != undefined) {
