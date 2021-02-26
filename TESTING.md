@@ -49,6 +49,11 @@ All HTML, CSS and JS files were validated with direct input and returned no erro
     - As a user, I can see the highest achieved level once the game is over.
     - As a user, I can email the level to myself once the game is over.
 
+## Automated testing
+
+The function to return the correct step number depending on the direction (previous or next) was tested using the Jamine Framework.
+[All tests passed](https://belaventer.github.io/simon-the-chameleon/test/jasmine-testing.html).
+
 ## Manual testing of features
 
 The deployed GitHub Page website was viewed on 2 desktops screens (21 and 13 inches) and also on Motorola G6 Play device.

@@ -137,6 +137,9 @@ An interesting future feature is to update the display images to short animated 
 - [jQuery API](https://api.jquery.com/):
   Used during coding for element selection and promises.
 
+- [Jasmine](https://jasmine.github.io/):
+  Used for automated testing of function.
+
 ## Testing
 
 Refer to [TESTING.md](TESTING.md) file for testing details.
