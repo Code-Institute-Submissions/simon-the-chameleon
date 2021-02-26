@@ -14,9 +14,9 @@ function displayInstructions(stepNumber) {
     $("#game-playable-area").html(
         `<h4 class="text-justify-center">Instructions</h4>
         <div class="flex-container-row" id="instruction-image-row">
-            <p class="flex-item-center"><button onclick="checkStepNumber(${stepNumber}, 'Previous')"><i class="fas fa-long-arrow-alt-left"></i></button></p>
+            <p class="flex-item-center"><button onclick="displayInstructions(checkStepNumber(${stepNumber}, 'Previous'))"><i class="fas fa-long-arrow-alt-left"></i></button></p>
             <img class="image-instruction" src="assets/images/${instructionsContent[stepNumber][0]}.png" alt="Simon game instruction: ${instructionsContent[stepNumber][1]}">
-            <p class="flex-item-center"><button onclick="checkStepNumber(${stepNumber}, 'Next')"><i class="fas fa-long-arrow-alt-right"></i></button></p>
+            <p class="flex-item-center"><button onclick="displayInstructions(checkStepNumber(${stepNumber}, 'Next'))"><i class="fas fa-long-arrow-alt-right"></i></button></p>
         </div>
         <p class="text-justify-center">${instructionsContent[stepNumber][2]}</p>`
     );
@@ -43,16 +43,12 @@ function displayInstructions(stepNumber) {
 // Change the Instructions step displayed
 function checkStepNumber(stepNumber, changeDirection) {
     if (stepNumber == 0 && changeDirection == "Previous") {
-        displayInstructions(5);
-        stepNumber = 5;
+        return 5;
     } else if (stepNumber == 5 && changeDirection == "Next") {
-        displayInstructions(0);
-        stepNumber = 0;
+        return 0;
     } else if (stepNumber != 0 && changeDirection == "Previous") {
-        displayInstructions(stepNumber - 1);
-        stepNumber = stepNumber - 1;
+        return stepNumber - 1;
     } else if (stepNumber != 5 && changeDirection == "Next") {
-        displayInstructions(stepNumber + 1);
-        stepNumber = stepNumber + 1;
+        return stepNumber + 1;
     }
 }
